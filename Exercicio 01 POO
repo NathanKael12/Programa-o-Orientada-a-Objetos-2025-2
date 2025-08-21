@@ -1,0 +1,46 @@
+
+class Book:
+    def __init__(self, title, author, year):
+        self.title = title
+        self.author = author
+        self.year = year
+
+    def __str__(self):
+        return f"'{self.title}' por {self.author} ({self.year})"
+
+class User:
+    def __init__(self, nome, endereco, idade):
+        self.nome = nome
+        self.endereco = endereco
+        self.idade = idade
+        self.livros_alugados = []  # Lista vazia de livros alugados
+
+    def __str__(self):
+        livros_str = ", ".join([str(livro) for livro in self.livros_alugados]) if self.livros_alugados else "Nenhum"
+        return f"Nome: {self.nome}\nEndereço: {self.endereco}\nIdade: {self.idade}\nLivros Alugados: {livros_str}"
+
+# Criando dois objetos da classe Book
+livro1 = Book("Percy Jackson e o Ladrão de Raios", "Rick Riordan", 2005)
+livro2 = Book("Percy Jackson e o Mar de Monstros", "Rick Riordan", 2006)
+
+# Criando dois objetos da classe User
+usuario1 = User("Millena Freire", "Rua Alvimar Silva, 12", 25)
+usuario2 = User("Marli de Lara", "Rua Ariovoldo Favalessa, 456", 59)
+
+# Adicionando alguns livros alugados aos usuários
+usuario1.livros_alugados.append(livro1)
+usuario2.livros_alugados.extend([livro1, livro2])
+
+# Imprimindo os valores dos atributos
+print("=== LIVROS ===")
+print(f"Livro 1: {livro1}")
+print(f"Livro 2: {livro2}")
+print("\n")
+
+print("=== USUÁRIOS ===")
+print("Usuário 1:")
+print(usuario1)
+print("\n")
+
+print("Usuário 2:")
+print(usuario2)
